@@ -1,0 +1,21 @@
+{
+  "appName": "QuestPilot",
+  "description": "Complete quest guidance system with Fresh Account Mode (Level 3 to Comp Cape) - RuneMetrics & Wiki Integration",
+  "appUrl": "index.html",
+  "configUrl": "appconfig.json",
+  "iconUrl": "",
+  "defaultWidth": 550,
+  "defaultHeight": 750,
+  "minWidth": 450,
+  "minHeight": 600,
+  "maxWidth": 1400,
+  "maxHeight": 1200,
+  "permissions": [
+    "pixel",
+    "overlay",
+    "gamestate"
+  ],
+  "activators": [],
+  "author": "QuestPilot Team",
+  "version": "1.0.0"
+}
