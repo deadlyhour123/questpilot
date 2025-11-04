@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestPilot - RS3 Quest Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://runeapps.org/apps/alt1/alt1lib.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-top">
+                <div class="logo-section">
+                    <span class="app-logo">🧭</span>
+                    <div class="title-group">
+                        <h1 class="title">QuestPilot</h1>
+                        <p class="subtitle">Your Complete RS3 Quest Guide</p>
+                    </div>
+                </div>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            
+            <div class="player-info" id="playerInfo">
+                <div class="player-avatar">👤</div>
+                <div class="player-details">
+                    <div class="player-label">Account</div>
+                    <div class="player-name" id="playerName">Detecting...</div>
+                </div>
+                <button class="refresh-btn" id="refreshBtn" title="Refresh">↻</button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="fresh-account">
+                <span class="tab-icon">🌱</span>
+                <span class="tab-label">Fresh Start</span>
+            </button>
+            <button class="tab-btn" data-tab="quests">
+                <span class="tab-icon">⚔️</span>
+                <span class="tab-label">Quests</span>
+            </button>
+            <button class="tab-btn" data-tab="progress">
+                <span class="tab-icon">📊</span>
+                <span class="tab-label">Progress</span>
+            </button>
+            <button class="tab-btn" data-tab="pathfinder">
+                <span class="tab-icon">🗺️</span>
+                <span class="tab-label">Pathfinder</span>
+            </button>
+            <button class="tab-btn" data-tab="settings">
+                <span class="tab-icon">⚙️</span>
+                <span class="tab-label">Settings</span>
+            </button>
+        </div>
+
+        <!-- Fresh Account Mode Tab -->
+        <div class="tab-content active" id="fresh-account">
+            <div class="section-header">🌱 Fresh Account Mode</div>
+            <div class="section-description">
+                Follow the optimal quest path from Level 3 all the way to Comp Cape!
+                Inspired by Project Tenacity, this mode calculates the most efficient progression for your account.
+            </div>
+
+            <!-- Account Mode Selection -->
+            <div class="mode-selector">
+                <div class="mode-card active" data-mode="regular">
+                    <span class="mode-icon">👤</span>
+                    <div class="mode-title">Regular Account</div>
+                    <div class="mode-description">Standard progression with Grand Exchange access</div>
+                </div>
+                <div class="mode-card" data-mode="ironman">
+                    <span class="mode-icon">⚒️</span>
+                    <div class="mode-title">Ironman Mode</div>
+                    <div class="mode-description">Self-sufficient progression without trading</div>
+                </div>
+                <div class="mode-card" data-mode="hardcore">
+                    <span class="mode-icon">💀</span>
+                    <div class="mode-title">Hardcore Ironman</div>
+                    <div class="mode-description">Ultimate challenge - one life only</div>
+                </div>
+            </div>
+
+            <!-- Goal Selection -->
+            <div class="info-box">
+                <h3>📌 Select Your Goal</h3>
+                <div class="mode-selector">
+                    <div class="mode-card" data-goal="quest-cape">
+                        <span class="mode-icon">🎯</span>
+                        <div class="mode-title">Quest Cape</div>
+                        <div class="mode-description">Complete all quests</div>
+                    </div>
+                    <div class="mode-card" data-goal="comp-cape">
+                        <span class="mode-icon">🏆</span>
+                        <div class="mode-title">Comp Cape</div>
+                        <div class="mode-description">Complete everything</div>
+                    </div>
+                    <div class="mode-card" data-goal="max-cape">
+                        <span class="mode-icon">⭐</span>
+                        <div class="mode-title">Max Cape</div>
+                        <div class="mode-description">Max all skills</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Status -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Total Level</div>
+                        <div class="stat-value" id="totalLevel">?</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚔️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Quests Done</div>
+                        <div class="stat-value" id="questsDone">0 / 268</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Est. Time to Goal</div>
+                        <div class="stat-value" id="timeToGoal">~</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Recommended Quest -->
+            <div class="info-box success">
+                <h3>🎯 Next Recommended Quest</h3>
+                <div id="nextQuest">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        <p>Calculating optimal path...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Quest Path (Next 5 Quests) -->
+            <h3 style="color: var(--text-primary); margin-bottom: 16px; margin-top: 24px;">📋 Your Quest Path (Next 5)</h3>
+            <div class="quest-list" id="recommendedPath">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="importProgressBtn">
+                    Import Progress from RuneMetrics
+                </button>
+                <button class="btn btn-secondary" id="recalculatePathBtn">
+                    Recalculate Path
+                </button>
+            </div>
+        </div>
+
+        <!-- Quests Tab -->
+        <div class="tab-content" id="quests">
+            <div class="section-header">⚔️ Quest Database</div>
+            <div class="section-description">
+                Browse and search through all RuneScape 3 quests. Click on any quest for detailed step-by-step guidance.
+            </div>
+
+            <!-- Search & Filter -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="questSearch" 
+                    placeholder="Search quests..."
+                />
+                <button class="search-btn" id="searchBtn">Search</button>
+            </div>
+
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All Quests</button>
+                <button class="filter-btn" data-filter="available">Available</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="f2p">F2P Only</button>
+            </div>
+
+            <div class="quest-count" id="questCount">
+                Showing 268 quests
+            </div>
+
+            <!-- Quest List -->
+            <div class="quest-list" id="questList">
+                <!-- Sample Quest Card -->
+                <div class="quest-card">
+                    <div class="quest-card-header">
+                        <div>
+                            <div class="quest-name">Cook's Assistant</div>
+                            <span class="quest-difficulty difficulty-novice">Novice</span>
+                        </div>
+                        <div class="quest-points">★ 1</div>
+                    </div>
+                    <div class="quest-requirements">
+                        <strong>Requirements:</strong> None
+                    </div>
+                </div>
+
+                <div class="quest-card">
+                    <div class="quest-card-header">
+                        <div>
+                            <div class="quest-name">Romeo & Juliet</div>
+                            <span class="quest-difficulty difficulty-novice">Novice</span>
+                        </div>
+                        <div class="quest-points">★ 5</div>
+                    </div>
+                    <div class="quest-requirements">
+                        <strong>Requirements:</strong> None
+                    </div>
+                </div>
+
+                <div class="quest-card completed">
+                    <div class="quest-card-header">
+                        <div>
+                            <div class="quest-name">Dragon Slayer</div>
+                            <span class="quest-difficulty difficulty-experienced">Experienced</span>
+                        </div>
+                        <div class="quest-points">★ 2</div>
+                    </div>
+                    <div class="quest-requirements">
+                        <strong>Requirements:</strong> 32 Quest Points
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tab -->
+        <div class="tab-content" id="progress">
+            <div class="section-header">📊 Your Progress</div>
+            <div class="section-description">
+                Track your quest completion and see your overall progression.
+            </div>
+
+            <!-- RS3 API Stats -->
+            <div class="info-box">
+                <h3>🌐 RuneMetrics Profile</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Level</div>
+                            <div class="stat-value" id="apiTotalLevel">?</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Quests Complete</div>
+                            <div class="stat-value" id="apiQuestsComplete">?</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Quest Points</div>
+                            <div class="stat-value" id="apiQuestPoints">?</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.85em;">
+                    Last synced: <span id="lastSync">Never</span>
+                </p>
+            </div>
+
+            <!-- Progress Overview -->
+            <h3 style="color: var(--text-primary); margin-bottom: 16px; margin-top: 24px;">📋 Local Progress Tracking</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⚔️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Quests Marked</div>
+                        <div class="stat-value" id="localQuestCount">0 / 268</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Completion</div>
+                        <div class="stat-value" id="completionPercent">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Overall Progress</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="syncProgressBtn">
+                    Sync with RuneMetrics
+                </button>
+                <button class="btn btn-danger" id="resetProgressBtn">
+                    Reset All Progress
+                </button>
+            </div>
+        </div>
+
+        <!-- Pathfinder Tab -->
+        <div class="tab-content" id="pathfinder">
+            <div class="section-header">🗺️ Quest Pathfinder</div>
+            <div class="section-description">
+                Get personalized quest recommendations based on your current stats and progress.
+            </div>
+
+            <div class="info-box">
+                <h3>🎯 How It Works</h3>
+                <p>The Pathfinder analyzes your account and suggests the optimal quest order based on:</p>
+                <ul>
+                    <li><strong>Current skill levels</strong> - Unlock quests you can complete now</li>
+                    <li><strong>XP rewards</strong> - Prioritize quests that give helpful XP</li>
+                    <li><strong>Quest chains</strong> - Complete prerequisites efficiently</li>
+                    <li><strong>Unlock value</strong> - Prioritize quests with useful rewards</li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="detectStatsBtn">
+                    Detect Stats from Game
+                </button>
+                <button class="btn btn-secondary" id="manualStatsBtn">
+                    Enter Stats Manually
+                </button>
+            </div>
+
+            <div id="pathfinderResults" style="margin-top: 24px;">
+                <!-- Results populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="tab-content" id="settings">
+            <div class="section-header">⚙️ Settings</div>
+
+            <div class="settings-group">
+                <div class="settings-title">Display Options</div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="showOverlay" checked>
+                        <span>Show in-game overlay</span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="autoSync" checked>
+                        <span>Auto-sync with RuneMetrics</span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="notifications">
+                        <span>Enable notifications</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="freshAccountMode" checked>
+                        <span>Enable Fresh Account Mode features</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <div class="settings-title">Data Management</div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-secondary" id="exportDataBtn">
+                        Export Progress Data
+                    </button>
+                    <button class="btn btn-secondary" id="importDataBtn">
+                        Import Progress Data
+                    </button>
+                    <button class="btn btn-danger" id="clearDataBtn">
+                        Clear All Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <div class="settings-title">Account Information</div>
+                <div class="info-box">
+                    <p><strong>Current Account:</strong> <span id="settingsPlayerName">Not detected</span></p>
+                    <p><strong>Account Mode:</strong> <span id="accountMode">Regular</span></p>
+                    <p><strong>Selected Goal:</strong> <span id="selectedGoal">Quest Cape</span></p>
+                    <p><strong>Last Updated:</strong> <span id="lastUpdated">Never</span></p>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <div class="settings-title">About QuestPilot</div>
+                <div class="info-box">
+                    <p><strong>Version:</strong> 1.0.0</p>
+                    <p><strong>Data Source:</strong> RuneScape Wiki + RuneMetrics API</p>
+                    <p><strong>Inspired by:</strong> Project Tenacity & Quest Helper (OSRS)</p>
+                    <p style="margin-top: 16px;">
+                        QuestPilot is designed to help RS3 players efficiently progress through all quest content,
+                        with special support for fresh accounts, Ironman mode, and optimal path planning.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://runescape.wiki" target="_blank">RuneScape Wiki</a>
+                <a href="https://github.com/questpilot/questpilot" target="_blank">GitHub</a>
+                <a href="https://discord.gg/questpilot" target="_blank">Discord</a>
+            </div>
+            <div class="footer-credit">
+                Made with ❤️ for the RS3 Community
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/questData.js"></script>
+    <script src="js/pathfinder.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>
