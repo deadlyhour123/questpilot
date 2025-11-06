@@ -1,0 +1,30 @@
+{
+  "name": "questpilot",
+  "version": "0.1.0",
+  "description": "Complete RS3 quest and achievement tracker - Level 3 to Trim Comp",
+  "main": "src/app.js",
+  "scripts": {
+    "scrape": "node scripts/wiki-scraper.js",
+    "serve": "npx live-server --port=8080",
+    "dev": "npx live-server --port=8080 --watch=src,index.html,styles.css"
+  },
+  "keywords": [
+    "runescape",
+    "rs3",
+    "alt1",
+    "quest",
+    "achievement",
+    "tracker"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@alt1/base": "^0.2.0",
+    "@alt1/chatbox": "^0.1.0"
+  },
+  "devDependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "live-server": "^1.2.2"
+  }
+}

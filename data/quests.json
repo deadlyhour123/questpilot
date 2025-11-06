@@ -1,0 +1,316 @@
+[
+  {
+    "name": "Cook's Assistant",
+    "difficulty": "Novice",
+    "length": "Short",
+    "questPoints": 1,
+    "series": "None",
+    "requirements": {
+      "skills": [],
+      "quests": [],
+      "items": []
+    },
+    "rewards": {
+      "experience": [
+        {
+          "skill": "Cooking",
+          "amount": 300
+        }
+      ],
+      "items": [],
+      "questPoints": 1
+    },
+    "members": false,
+    "url": "https://runescape.wiki/w/Cook%27s_Assistant"
+  },
+  {
+    "name": "The Blood Pact",
+    "difficulty": "Novice",
+    "length": "Short",
+    "questPoints": 1,
+    "series": "None",
+    "requirements": {
+      "skills": [],
+      "quests": [],
+      "items": []
+    },
+    "rewards": {
+      "experience": [
+        {
+          "skill": "Attack",
+          "amount": 100
+        },
+        {
+          "skill": "Strength",
+          "amount": 100
+        },
+        {
+          "skill": "Defence",
+          "amount": 100
+        },
+        {
+          "skill": "Ranged",
+          "amount": 100
+        },
+        {
+          "skill": "Magic",
+          "amount": 100
+        }
+      ],
+      "items": [],
+      "questPoints": 1
+    },
+    "members": false,
+    "url": "https://runescape.wiki/w/The_Blood_Pact"
+  },
+  {
+    "name": "Rune Mysteries",
+    "difficulty": "Novice",
+    "length": "Short",
+    "questPoints": 1,
+    "series": "None",
+    "requirements": {
+      "skills": [],
+      "quests": [],
+      "items": []
+    },
+    "rewards": {
+      "experience": [
+        {
+          "skill": "Runecraft",
+          "amount": 250
+        }
+      ],
+      "items": [],
+      "questPoints": 1
+    },
+    "members": false,
+    "url": "https://runescape.wiki/w/Rune_Mysteries"
+  },
+  {
+    "name": "Dragon Slayer",
+    "difficulty": "Experienced",
+    "length": "Medium",
+    "questPoints": 2,
+    "series": "None",
+    "requirements": {
+      "skills": [],
+      "quests": [],
+      "items": []
+    },
+    "rewards": {
+      "experience": [
+        {
+          "skill": "Defence",
+          "amount": 18650
+        },
+        {
+          "skill": "Strength",
+          "amount": 18650
+        }
+      ],
+      "items": [],
+      "questPoints": 2
+    },
+    "members": false,
+    "url": "https://runescape.wiki/w/Dragon_Slayer"
+  },
+  {
+    "name": "Demon Slayer",
+    "difficulty": "Novice",
+    "length": "Short",
+    "questPoints": 3,
+    "series": "None",
+    "requirements": {
+      "skills": [],
+      "quests": [],
+      "items": []
+    },
+    "rewards": {
+      "experience": [],
+      "items": [],
+      "questPoints": 3
+    },
+    "members": false,
+    "url": "https://runescape.wiki/w/Demon_Slayer"
+  },
+  {
+    "name": "Plague's End",
+    "difficulty": "Grandmaster",
+    "length": "Long",
+    "questPoints": 3,
+    "series": "Elf",
+    "requirements": {
+      "skills": [
+        {
+          "skill": "Agility",
+          "level": 75
+        },
+        {
+          "skill": "Construction",
+          "level": 75
+        },
+        {
+          "skill": "Dungeoneering",
+          "level": 75
+        },
+        {
+          "skill": "Herblore",
+          "level": 75
+        },
+        {
+          "skill": "Mining",
+          "level": 75
+        },
+        {
+          "skill": "Prayer",
+          "level": 75
+        },
+        {
+          "skill": "Summoning",
+          "level": 75
+        }
+      ],
+      "quests": [
+        "Catapult Construction",
+        "Mourning's End Part II",
+        "Within the Light"
+      ],
+      "items": []
+    },
+    "rewards": {
+      "experience": [
+        {
+          "skill": "Agility",
+          "amount": 50000
+        },
+        {
+          "skill": "Construction",
+          "amount": 50000
+        },
+        {
+          "skill": "Dungeoneering",
+          "amount": 50000
+        },
+        {
+          "skill": "Herblore",
+          "amount": 50000
+        },
+        {
+          "skill": "Mining",
+          "amount": 50000
+        },
+        {
+          "skill": "Prayer",
+          "amount": 50000
+        },
+        {
+          "skill": "Summoning",
+          "amount": 50000
+        }
+      ],
+      "items": [],
+      "questPoints": 3
+    },
+    "members": true,
+    "url": "https://runescape.wiki/w/Plague%27s_End"
+  },
+  {
+    "name": "The World Wakes",
+    "difficulty": "Master",
+    "length": "Very Long",
+    "questPoints": 3,
+    "series": "None",
+    "requirements": {
+      "skills": [],
+      "quests": [
+        "The Branches of Darkmeyer",
+        "The Firemaker's Curse",
+        "Ritual of the Mahjarrat",
+        "The Void Stares Back"
+      ],
+      "items": []
+    },
+    "rewards": {
+      "experience": [],
+      "items": [],
+      "questPoints": 3
+    },
+    "members": true,
+    "url": "https://runescape.wiki/w/The_World_Wakes"
+  },
+  {
+    "name": "Ritual of the Mahjarrat",
+    "difficulty": "Master",
+    "length": "Very Long",
+    "questPoints": 3,
+    "series": "Mahjarrat",
+    "requirements": {
+      "skills": [
+        {
+          "skill": "Agility",
+          "level": 76
+        },
+        {
+          "skill": "Crafting",
+          "level": 76
+        },
+        {
+          "skill": "Mining",
+          "level": 76
+        },
+        {
+          "skill": "Firemaking",
+          "level": 77
+        },
+        {
+          "skill": "Prayer",
+          "level": 77
+        },
+        {
+          "skill": "Summoning",
+          "level": 77
+        }
+      ],
+      "quests": [
+        "The Dig Site",
+        "Desert Treasure",
+        "Curse of Arrav",
+        "The Temple at Senntisten"
+      ],
+      "items": []
+    },
+    "rewards": {
+      "experience": [
+        {
+          "skill": "Agility",
+          "amount": 150000
+        },
+        {
+          "skill": "Crafting",
+          "amount": 150000
+        },
+        {
+          "skill": "Mining",
+          "amount": 150000
+        },
+        {
+          "skill": "Firemaking",
+          "amount": 155000
+        },
+        {
+          "skill": "Prayer",
+          "amount": 155000
+        },
+        {
+          "skill": "Summoning",
+          "amount": 155000
+        }
+      ],
+      "items": [],
+      "questPoints": 3
+    },
+    "members": true,
+    "url": "https://runescape.wiki/w/Ritual_of_the_Mahjarrat"
+  }
+]
