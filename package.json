@@ -1,12 +1,14 @@
 {
   "name": "questpilot",
-  "version": "0.1.0",
-  "description": "Complete RS3 quest and achievement tracker - Level 3 to Trim Comp",
+  "version": "0.2.0",
+  "description": "Complete RS3 quest and achievement tracker - Level 3 to Trim Comp (Now with Chat Reading!)",
   "main": "src/app.js",
+  "type": "module",
   "scripts": {
     "scrape": "node scripts/wiki-scraper.js",
     "serve": "npx live-server --port=8080",
-    "dev": "npx live-server --port=8080 --watch=src,index.html,styles.css"
+    "dev": "npx live-server --port=8080 --watch=src,index.html,styles.css",
+    "test": "node --experimental-modules src/testUtils.js"
   },
   "keywords": [
     "runescape",
